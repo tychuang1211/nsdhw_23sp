@@ -62,7 +62,7 @@ for it in range(size):
 		naivesec = minsec = min(naive.repeat(repeat=repeat, number=1))
 		w.write(f'{minsec} seconds\n')
 
-		tsizes = [8, 16, 32]
+		tsizes = [16, 32]
 		for tsize in tsizes:
 			tile = timeit.Timer(f'_matrix.multiply_tile(mat1, mat2, {tsize})', setup=setup)
 			w.write(f'Start multiply_tile (tsize={tsize}, repeat={repeat}), take min = ')

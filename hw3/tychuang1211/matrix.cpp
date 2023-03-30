@@ -158,15 +158,15 @@ Matrix multiply_tile(Matrix const & mat1, Matrix const & mat2, size_t tsize)
     
     Matrix ret(nrow1, ncol2);
 
-    for (size_t tj = 0; tj < ncol1; tj += tsize)
+    for (size_t tk = 0; tk < ncol2; tk += tsize)
     {
-        size_t jmax = std::min(tj + tsize, ncol1);
+        size_t kmax = std::min(tk + tsize, ncol2)*ncol2;
         for (size_t ti = 0; ti < nrow1; ti += tsize)
         {
             size_t imax = std::min(ti + tsize, nrow1);
-            for (size_t tk = 0; tk < ncol2; tk += tsize)
+            for (size_t tj = 0; tj < ncol1; tj += tsize)
             {
-                size_t kmax = std::min(tk + tsize, ncol2)*ncol2;
+                size_t jmax = std::min(tj + tsize, ncol1);
                 for (size_t j = tj; j < jmax; ++j)
                 {
                     for (size_t i = ti; i < imax; ++i)
